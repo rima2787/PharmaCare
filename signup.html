@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy Management System - Sign Up</title>
     <link rel="stylesheet" href="styles/styles.css">
+
 </head>
 
 <body class="signup-bg">
     <div class="login-container">
         <h2>Create an Account</h2>
         <form class="login-form">
+            <label for="username">Name</label>
+            <input type="text" id="nameInput" placeholder="Your Name" class="input-field" oninput="checkName()">
+            <div class="role-question" id="roleQuestion" style="display: none;">Who are You ?</div>
+            <div class="radio-options" id="radioOptions" style="display: none;">
+                <input type="radio" id="pharmacist" name="role" value="pharmacist">
+                <label for="pharmacist">Pharmacist</label>
+                <input type="radio" id="assistant" name="role" value="assistant">
+                <label for="assistant">Assistant Pharmacist</label>
+                <input type="radio" id="cashier" name="role" value="cashier">
+                <label for="cashier">Cashier</label>
+            </div>
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Choose a username" required>
@@ -30,6 +42,21 @@
             <a href="login.html" class="sign-in">Already have an account? Login</a>
         </div>
     </div>
+    <script>
+        function checkName() {
+            const nameInput = document.getElementById('nameInput').value;
+            const roleQuestion = document.getElementById('roleQuestion');
+            const radioOptions = document.getElementById('radioOptions');
+
+            if (nameInput.trim() !== '') {
+                roleQuestion.style.display = 'block';
+                radioOptions.style.display = 'block';
+            } else {
+                roleQuestion.style.display = 'none';
+                radioOptions.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 
 </html>
